@@ -1,0 +1,15 @@
+/* Basic styling, customize as needed */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.error {
+  color: red;
+}
