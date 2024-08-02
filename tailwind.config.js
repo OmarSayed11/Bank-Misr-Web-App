@@ -9,6 +9,7 @@ module.exports = {
         "primary/p300": "#871E35",
         "Primary/P500": "#521220",
         "Primary/P50": "#F3E9EB",
+        "Gray/G10": "#FBFBFB",
         "Gray/G50": "#FFFFFF",
         "Gray/G100": "#898886",
         "Gray/G700": "#3C3A37",

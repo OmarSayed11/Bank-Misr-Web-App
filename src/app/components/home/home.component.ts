@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { MobileSectionComponent } from '../mobile-section/mobile-section.component';
+import { MobileSectionComponent } from '../homeScreen/mobile-section/mobile-section.component';
 import { FooterComponent } from '../footer/footer.component';
 import { HeaderComponent } from '../header/header.component';
-import { TransactionsComponent } from '../transactions/transactions.component';
+import { TransactionsComponent } from '../homeScreen/transactions/transactions.component';
+import { GettingStartedComponent } from '../homeScreen/getting-started/getting-started.component';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,7 @@ import { TransactionsComponent } from '../transactions/transactions.component';
     FooterComponent,
     HeaderComponent,
     TransactionsComponent,
+    GettingStartedComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',

@@ -3,7 +3,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/sign up/signup.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { MobileSectionComponent } from './components/mobile-section/mobile-section.component';
+import { MobileSectionComponent } from './components/homeScreen/mobile-section/mobile-section.component';
 
 // import { RegisterComponent } from './auth/register/register.component';
 // import { AccountComponent } from './dashboard/account/account.component';
