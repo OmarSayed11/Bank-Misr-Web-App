@@ -9,6 +9,9 @@ import { PaymentHistoryComponent } from './components/profile/payment-history/pa
 import { SettingsComponent } from './components/profile/settings/settings.component';
 import { ChangePasswordComponent } from './components/profile/change-password/change-password.component';
 import { NoProfileComponent } from './components/profile/no-profile/no-profile.component';
+import { MoneyTransferComponent } from './components/transfer/money-transfer/money-transfer.component';
+import { Step2Component } from './components/transfer/step2/step2.component';
+import { Step3Component } from './components/transfer/step3/step3.component';
 
 // import { RegisterComponent } from './auth/register/register.component';
 // import { AccountComponent } from './dashboard/account/account.component';
@@ -29,6 +32,9 @@ export const routes: Routes = [
   { path: 'profile/settings', component: SettingsComponent },
   { path: 'profile/changepassword', component: ChangePasswordComponent },
   { path: 'profile/noprofile', component: NoProfileComponent },
+  { path: 'moneytransfer', component: MoneyTransferComponent },
+  { path: 'moneytransfer/step2', component: Step2Component },
+  { path: 'moneytransfer/step3', component: Step3Component },
   //   { path: 'dashboard', component: AccountComponent, canActivate: [AuthGuard] },
   //   {
   //     path: 'transaction-history',
