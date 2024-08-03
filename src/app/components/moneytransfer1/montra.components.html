@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="speedoTransferApp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Speedo Transfer</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body class="bg-gray-100">
+    <header class="bg-white shadow">
+      <div
+        class="container mx-auto px-6 py-3 flex justify-between items-center"
+      >
+        <div>
+          <a href="#" class="text-xl font-bold text-gray-800"
+            >Speedo Transfer</a
+          >
+        </div>
+        <div class="flex items-center">
+          <nav class="flex space-x-4">
+            <a href="#" class="text-gray-800">Home</a>
+            <a href="#" class="text-gray-800">Money Transfer</a>
+            <a href="#" class="text-gray-800">My Account</a>
+          </nav>
+          <a href="#" class="ml-4 px-4 py-2 text-white bg-red-800 rounded"
+            >Register Now</a
+          >
+          <a href="#" class="ml-4 px-4 py-2 text-gray-800 bg-gray-200 rounded"
+            >Login</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <main class="container mx-auto mt-10">
+      <section class="bg-white shadow-md rounded p-6">
+        <img src="/phase1.png" />
+        <h2 class="text-2xl font-bold mb-4 text-center">
+          How much are you sending ?
+        </h2>
+
+        <p class="text-gray-600 mb-6 text-center">Rate guaranteed (2h):</p>
+        <h2 class="font-bold mb-4 text-center">1 USD = 48.4220 EGP</h2>
+        <form ng-submit="transfer()">
+          <div class="mb-4">
+            <label class="block text-gray-700">You send</label>
+            <div class="flex mt-1">
+              <input
+                type="number"
+                class="form-input w-full"
+                ng-model="amount"
+                placeholder="1000"
+              />
+              <span class="ml-2 self-center">USD</span>
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="block text-gray-700">Recipient Gets</label>
+            <div class="flex mt-1">
+              <input
+                type="number"
+                class="form-input w-full"
+                ng-model="recipientGets"
+                placeholder="48200.42"
+              />
+              <span class="ml-2 self-center">EGP</span>
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="block text-gray-700">Recipient Name</label>
+            <input
+              type="text"
+              class="form-input w-full"
+              ng-model="recipientName"
+              placeholder="Recipient Name"
+            />
+          </div>
+          <div class="mb-4">
+            <label class="block text-gray-700 box-border"
+              >Recipient Account</label
+            >
+            <input
+              type="text"
+              class="form-input w-full"
+              ng-model="recipientAccount"
+              placeholder="Recipient Account"
+            />
+          </div>
+          <button
+            type="submit"
+            class="w-full bg-red-800 text-white py-2 rounded"
+          >
+            Continue
+          </button>
+        </form>
+      </section>
+
+      <section class="bg-white shadow-md rounded p-6 mt-10 flex">
+        <div class="flex-1">
+          <img src="phone-image.png" alt="Phone" class="w-48 mx-auto" />
+        </div>
+        <div class="flex-1">
+          <h2 class="text-2xl font-bold mb-4">
+            Download our apps of your mobile phone for service
+          </h2>
+          <p class="text-gray-600 mb-4">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="bg-black text-white px-4 py-2 rounded"
+              >App Store</a
+            >
+            <a href="#" class="bg-black text-white px-4 py-2 rounded"
+              >Google Play</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-6 mt-10">
+      <div class="container mx-auto text-center">
+        <p>Speedo Transfer</p>
+      </div>
+    </footer>
+  </body>
+</html>
