@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 export class FavoriteService {
   accountNumber: string | null = localStorage.getItem('accNum');
 
-  private baseUrl = 'http://localhost:8080/api/v1/favorites';
-  private GetbaseUrl = 'http://localhost:8080/api/v1/favorites';
+  private baseUrl =
+    'https://money-transfer-430a47bbe633.herokuapp.com/api/v1/favorites';
 
   constructor(private http: HttpClient) {}
 
@@ -18,14 +18,20 @@ export class FavoriteService {
   }
 
   getFavorites(accountNumber: string): Observable<any> {
-    return this.http.get(this.GetbaseUrl, {
+    return this.http.get(this.baseUrl, {
       params: { 'account-number': accountNumber },
     });
   }
 
-  deleteFavorite(accountId: string, recipientName: string): Observable<any> {
+  deleteFavorite(
+    accountNumber: string,
+    recipientAccNumber: string
+  ): Observable<any> {
     return this.http.delete(this.baseUrl, {
-      params: { 'account-id': accountId, 'recipient-name': recipientName },
+      params: {
+        'account-number': accountNumber,
+        'recipient-account-number': recipientAccNumber,
+      },
     });
   }
 }

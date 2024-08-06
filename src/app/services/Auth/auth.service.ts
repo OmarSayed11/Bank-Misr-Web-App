@@ -7,8 +7,10 @@ import { Observable, BehaviorSubject, of } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8888/api/v1/auth/register';
-  private authenticateUrl = 'http://localhost:8888/api/v1/auth/authenticate';
+  private apiUrl =
+    'https://money-transfer-430a47bbe633.herokuapp.com/api/v1/auth/register';
+  private authenticateUrl =
+    'https://money-transfer-430a47bbe633.herokuapp.com/api/v1/auth/authenticate';
 
   private isLoggedIn = false;
   private showModalSubject = new BehaviorSubject<boolean>(false);

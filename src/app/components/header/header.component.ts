@@ -87,12 +87,17 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('accNum');
     this.isLoggedIn = false;
     this.username = null;
-    this.http.post('http://localhost:8888/api/v1/auth/logout', {}).subscribe({
-      next: () => {},
-      error: (err) => {
-        console.error('Logout error:', err);
-      },
-    });
+    this.http
+      .post(
+        'https://money-transfer-430a47bbe633.herokuapp.com/api/v1/auth/logout',
+        {}
+      )
+      .subscribe({
+        next: () => {},
+        error: (err) => {
+          console.error('Logout error:', err);
+        },
+      });
     this.router.navigate(['/home']);
   }
 }

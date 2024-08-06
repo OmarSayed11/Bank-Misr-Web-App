@@ -6,13 +6,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AccountService {
-  private baseUrl = 'http://localhost:8888/api/v1/accounts';
+  private baseUrl =
+    'https://money-transfer-430a47bbe633.herokuapp.com/api/v1/accounts';
   private accountBalance =
-    'http://localhost:8888/api/v1/accounts/current-balance';
-  private AccountUrl = 'http://localhost:8888/api/v1/accounts/details';
+    'https://money-transfer-430a47bbe633.herokuapp.com/api/v1/accounts/current-balance';
+  private AccountUrl =
+    'https://money-transfer-430a47bbe633.herokuapp.com/api/v1/accounts/details';
   private Gettransactions =
-    'http://localhost:8888/api/v1/transactions/transaction';
-  private transferUrl = 'http://localhost:8888/api/v1/accounts/transfer';
+    'https://money-transfer-430a47bbe633.herokuapp.com/api/v1/transactions/transaction';
+  private transferUrl =
+    'https://money-transfer-430a47bbe633.herokuapp.com/api/v1/accounts/transfer';
   constructor(private http: HttpClient) {}
 
   // createAccount(accountData: any): Observable<any> {
