@@ -1,147 +1,167 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="signupApp">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Create Account - Speedo Transfer</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.3/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
-    <style>
-      /* Additional custom styles if necessary */
-    </style>
-  </head>
-  <body class="bg-gray-100">
-    <div class="min-h-screen flex flex-col justify-center items-center">
-      <div class="bg-white p-8 rounded-lg shadow-md w-96">
-        <h2 class="text-2xl font-bold mb-5 text-center">Create Your Account</h2>
-        <p class="text-gray-600 text-center mb-4">
-          Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod
-          tempor incididunt ut labore.
-        </p>
-        <form
-          name="signupForm"
-          ng-controller="SignupController"
-          ng-submit="signup()"
+<!-- src/app/components/sign-up/sign-up.component.html -->
+<div
+  class="fixed inset-0 grid place-items-center bg-Gray/G50 overflow-x-auto"
+  *ngIf="authModalService.signupVisible$ | async"
+>
+  <div class="w-full flex items-center justify-between px-8 py-4 mb-5">
+    <div class="text-[32px] font-semibold">Speedo Transfer</div>
+    <button (click)="closeModal()" class="cursor-pointer text-gray-600">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M6 18L18 6M6 6L18 18"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
+  </div>
+  <div class="bg-white p-8 rounded-lg shadow-md grid w-[565px] gap-6 relative">
+    <div class="h-[112px] gap-[16px] flex flex-col items-start">
+      <h2 class="text-Gray/G900 leading-[48px] font-semibold text-[32px]">
+        Create Your Account
+      </h2>
+      <p class="font-normal text-[16px] text-Gray/G500 leading-[24px]">
+        Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod
+        tempor incididunt ut labore.
+      </p>
+    </div>
+    <form (ngSubmit)="onSubmit()" class="grid gap-6">
+      <div class="grid gap-2">
+        <label class="block text-gray-700" for="username">User name</label>
+        <input
+          type="text"
+          id="username"
+          [(ngModel)]="username"
+          name="username"
+          placeholder="Enter your username"
+          class="w-full p-2 px-4 border border-gray-300 rounded"
+          required
+        />
+      </div>
+      <div class="grid gap-2">
+        <label class="block text-gray-700" for="email">Email address</label>
+        <input
+          type="email"
+          id="email"
+          [(ngModel)]="email"
+          name="email"
+          placeholder="Email@gmail.com"
+          class="w-full p-2 px-4 border border-gray-300 rounded"
+          required
+        />
+      </div>
+      <div class="grid gap-2">
+        <label class="block text-gray-700" for="country">Country</label>
+        <select
+          id="country"
+          [(ngModel)]="country"
+          name="country"
+          class="w-full p-2 px-4 border border-gray-300 rounded"
+          required
         >
-          <div class="mb-4">
-            <label class="block text-gray-700 mb-2" for="username"
-              >User name</label
-            >
-            <input
-              type="text"
-              id="username"
-              ng-model="user.username"
-              class="w-full p-2 border border-gray-300 rounded"
-              required
-            />
-          </div>
-          <div class="mb-4">
-            <label class="block text-gray-700 mb-2" for="email"
-              >Email address</label
-            >
-            <input
-              type="email"
-              id="email"
-              ng-model="user.email"
-              class="w-full p-2 border border-gray-300 rounded"
-              required
-            />
-          </div>
-          <div class="mb-4">
-            <label class="block text-gray-700 mb-2" for="country"
-              >Country</label
-            >
-            <select
-              id="country"
-              ng-model="user.country"
-              class="w-full p-2 border border-gray-300 rounded"
-              required
-            >
-              <option value="UK">UK</option>
-              <option value="US">US</option>
-              <option value="Canada">Canada</option>
-              <!-- Add more countries as needed -->
-            </select>
-          </div>
-          <div class="mb-4">
-            <label class="block text-gray-700 mb-2" for="dob"
-              >Date of Birth</label
-            >
-            <div class="flex space-x-2">
-              <input
-                type="text"
-                id="dob"
-                ng-model="user.dob.day"
-                placeholder="Day"
-                class="w-1/3 p-2 border border-gray-300 rounded"
-                required
-              />
-              <input
-                type="text"
-                ng-model="user.dob.month"
-                placeholder="Month"
-                class="w-1/3 p-2 border border-gray-300 rounded"
-                required
-              />
-              <input
-                type="text"
-                ng-model="user.dob.year"
-                placeholder="Year"
-                class="w-1/3 p-2 border border-gray-300 rounded"
-                required
-              />
-            </div>
-          </div>
-          <div class="mb-4">
-            <label class="block text-gray-700 mb-2" for="password"
-              >Password</label
-            >
-            <input
-              type="password"
-              id="password"
-              ng-model="user.password"
-              class="w-full p-2 border border-gray-300 rounded"
-              required
-            />
-          </div>
-          <div class="mb-4">
-            <label class="block text-gray-700 mb-2" for="confirm_password"
-              >Confirm password</label
-            >
-            <input
-              type="password"
-              id="confirm_password"
-              ng-model="user.confirm_password"
-              class="w-full p-2 border border-gray-300 rounded"
-              required
-            />
-          </div>
-          <div class="mb-4 text-xs text-gray-600">
-            <p>
-              Your password should be at least eight characters long. To make it
-              stronger, use upper and lower case letters, numbers, and symbols
-              like ! " ? $ % ^ & .
-            </p>
-          </div>
-          <button
-            type="submit"
-            class="w-full bg-red-600 text-white p-2 rounded"
-          >
-            Create Account
-          </button>
-        </form>
-        <p class="mt-5 text-center">
-          Already have an account? <a href="#" class="text-red-600">Login</a>
+          <option value="EGP">EGP</option>
+          <option value="UK">UK</option>
+          <option value="US">US</option>
+          <option value="Canada">Canada</option>
+        </select>
+      </div>
+      <div class="grid gap-2">
+        <label class="block text-gray-700" for="branch">Branch</label>
+        <input
+          type="text"
+          id="branch"
+          [(ngModel)]="branch"
+          name="branch"
+          placeholder="Enter your branch"
+          class="w-full p-2 px-4 border border-gray-300 rounded"
+          required
+        />
+      </div>
+      <div class="grid gap-2">
+        <label class="block text-gray-700" for="dob">Date of Birth</label>
+        <div class="grid grid-cols-3 gap-2">
+          <input
+            type="text"
+            id="dob-day"
+            [(ngModel)]="day"
+            name="day"
+            placeholder="Day"
+            class="p-2 border border-gray-300 rounded"
+            required
+          />
+          <input
+            type="text"
+            [(ngModel)]="month"
+            name="month"
+            placeholder="Month"
+            class="p-2 border border-gray-300 rounded"
+            required
+          />
+          <input
+            type="text"
+            [(ngModel)]="year"
+            name="year"
+            placeholder="Year"
+            class="p-2 border border-gray-300 rounded"
+            required
+          />
+        </div>
+      </div>
+      <div class="grid gap-2">
+        <label class="block text-gray-700" for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          [(ngModel)]="password"
+          name="password"
+          placeholder="Enter your password"
+          class="w-full p-2 px-4 border border-gray-300 rounded"
+          required
+        />
+      </div>
+      <div class="grid gap-2">
+        <label class="block text-gray-700" for="confirmPassword"
+          >Confirm password</label
+        >
+        <input
+          type="password"
+          id="confirmPassword"
+          [(ngModel)]="confirmPassword"
+          name="confirmPassword"
+          placeholder="Re-enter your password"
+          class="w-full p-2 px-4 border border-gray-300 rounded"
+          required
+        />
+      </div>
+      <div class="text-xs text-gray-600">
+        <p>
+          Your password should be at least eight characters long. To make it
+          stronger, use upper and lower case letters, numbers, and symbols like
+          ! " ? $ % ^ & .
         </p>
       </div>
-    </div>
-    <footer class="text-center mt-8">
-      <p>©Speedo Transfer Payments Limited 2024</p>
-    </footer>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <script src="app.js"></script>
-  </body>
-</html>
+      <button
+        type="submit"
+        class="w-full bg-primary/p300 text-white py-4 rounded text-[16px] leading-[24px] text-center font-medium"
+      >
+        Create Account
+      </button>
+    </form>
+    <p class="mt-5 text-center">
+      Already have an account?
+      <a
+        (click)="authModalService.openLogin()"
+        class="text-primary/p300 cursor-pointer"
+        >Login</a
+      >
+    </p>
+  </div>
+</div>

@@ -1,4 +1,3 @@
-<app-header></app-header>
 <div class="w-[701px] h-[718px] flex flex-row gap-8 ml-24 mt-[66.77px] mb-14">
   <app-sidebar />
   <div class="w-[408px] h-[718px] flex flex-col">
@@ -11,7 +10,7 @@
       <div
         class="w-[376px] h-[96px] gap-2 font-semibold text-[64px] leading[96px] text-Gray/G900 flex flex-row items-center text-center"
       >
-        10000$
+        {{ balance ? balance + "$" : "Loading..." }}
         <span class="text-[32px] text-Primary/P400 font-semibold leading-[48px]"
           >Balance</span
         >
@@ -42,21 +41,19 @@
         </div>
         <div class="flex flex-col w-[210px] h-[192px] gap-8">
           <div class="font-normal text-[16px] leading-6 text-Gray/G300">
-            Jonathan Smith
+            {{ username }}
           </div>
           <div class="font-normal text-[16px] leading-6 text-Gray/G300">
-            jhonathonsmithgmail.com
+            {{ email }}
           </div>
           <div class="font-normal text-[16px] leading-6 text-Gray/G300">
-            +880125412624
+            {{ phone }}
           </div>
           <div class="font-normal text-[16px] leading-6 text-Gray/G300">
-            Male
+            {{ gender }}
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-<app-mobile-section></app-mobile-section>
-<app-footer></app-footer>

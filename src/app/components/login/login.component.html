@@ -1,68 +1,96 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="loginApp">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login - Speedo Transfer</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.3/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
-    <style>
-      /* Additional custom styles */
-    </style>
-  </head>
-  <body class="bg-gray-100">
-    <div class="min-h-screen flex flex-col justify-center items-center">
-      <div class="bg-white p-8 rounded-lg shadow-md w-96">
-        <h2 class="text-2xl font-bold mb-5 text-center">Login</h2>
-        <form
-          name="loginForm"
-          ng-controller="LoginController"
-          ng-submit="login()"
+<!-- src/app/components/login/login.component.html -->
+<div
+  class="fixed inset-0 grid place-items-center justify-around bg-Gray/G50"
+  *ngIf="authModalService.loginVisible$ | async"
+>
+  <div class="col-span-12 w-full flex items-center justify-between p-4">
+    <div class="text-[32px] font-semibold">Speedo Transfer</div>
+    <div (click)="closeModal()" class="cursor-pointer text-gray-600">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M6 18L18 6M6 6L18 18"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </div>
+  </div>
+  <div class="rounded-lg grid col-start-7 relative">
+    <div class="col-span-12 px-8 grid place-items-center">
+      <div class="w-[501px] h-[100px] gap-[16px] flex flex-col items-center">
+        <h2
+          class="font-semibold text-[40px] leading-[60px] text-center w-[501px] h-[60px] text-Gray/G900"
         >
-          <div class="mb-4">
+          Login
+        </h2>
+        <p
+          class="w-[178px] h-[24px] flex flex-row gap-[8px] text-[16px] font-normal leading-[24px] text-center text-Gray/G500"
+        >
+          New Account?
+          <a
+            (click)="authModalService.openSignup()"
+            class="text-Gray/G500 text-[16px] text-center font-medium leading-[24px] cursor-pointer"
+            >Sign Up</a
+          >
+        </p>
+      </div>
+
+      <form
+        (ngSubmit)="onSubmit()"
+        class="flex flex-col w-[565px] h-[600px] gap-[32px] px-[64px] py-[32px] bg-Gray/G50 shadow-md"
+      >
+        <div class="h-[296px] flex flex-col gap-[32px]">
+          <div class="h-[96px] flex flex-col gap-[16px]">
             <label class="block text-gray-700 mb-2" for="email"
               >Your email address</label
             >
             <input
               type="email"
               id="email"
-              ng-model="user.email"
-              class="w-full p-2 border border-gray-300 rounded"
+              [(ngModel)]="email"
+              name="email"
+              placeholder="Email@gmail.com"
+              class="w-full p-2 px-4 border border-gray-300 rounded"
               required
             />
           </div>
-          <div class="mb-4">
+          <div class="h-[96px] flex flex-col gap-[16px]">
             <label class="block text-gray-700 mb-2" for="password"
               >Password</label
             >
             <input
               type="password"
               id="password"
-              ng-model="user.password"
-              class="w-full p-2 border border-gray-300 rounded"
+              [(ngModel)]="password"
+              name="password"
+              class="w-full p-2 px-4 border border-gray-300 rounded"
               required
             />
           </div>
           <button
             type="submit"
-            class="w-full bg-red-600 text-white p-2 rounded"
+            class="bg-primary/p300 text-Gray/G50 py-4 rounded text-[16px] leading-[24px] text-center font-medium"
           >
             Login
           </button>
-        </form>
+        </div>
         <p class="mt-5 text-center">
           Don't have an account?
-          <a href="#" class="text-red-600">Create Account</a>
+          <a
+            (click)="authModalService.openSignup()"
+            class="text-primary/p300 cursor-pointer"
+            >Create Account</a
+          >
         </p>
-      </div>
+      </form>
     </div>
-    <footer class="text-center mt-8">
-      <p>©Speedo Transfer Payments Limited 2024</p>
-    </footer>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <script src="app.js"></script>
-  </body>
-</html>
+  </div>
+</div>

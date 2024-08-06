@@ -1,6 +1,5 @@
-<app-header></app-header>
 <div class="w-[1248px] h-[718px] flex flex-row gap-8 ml-24 mt-[66.77px] mb-14">
-  <app-sidebar />
+  <app-sidebar></app-sidebar>
   <div class="w-[955px] h-[718px] flex flex-col">
     <div
       class="w-[752px] h-[410px] gap-8 flex flex-col items-start content-start text-left"
@@ -36,6 +35,7 @@
                   <input
                     type="text"
                     placeholder="Johnathon"
+                    [(ngModel)]="userName"
                     class="font-normal text-[16px] leading-6 text-Gray/G500"
                   />
                 </div>
@@ -52,6 +52,7 @@
                   <input
                     type="text"
                     placeholder="+880125412624"
+                    [(ngModel)]="phone"
                     class="font-normal text-[16px] leading-6 text-Gray/G500"
                   />
                 </div>
@@ -70,6 +71,7 @@
                   <input
                     type="text"
                     placeholder="Smith"
+                    [(ngModel)]="lastName"
                     class="font-normal text-[16px] leading-6 text-Gray/G500"
                   />
                 </div>
@@ -86,6 +88,7 @@
                   <input
                     type="text"
                     placeholder="johnathonsmith@gmail.com"
+                    [(ngModel)]="email"
                     class="font-normal text-[16px] leading-6 text-Gray/G500"
                   />
                 </div>
@@ -93,6 +96,7 @@
             </div>
           </div>
           <button
+            (click)="updateProfile()"
             class="w-[174px] h-[56px] rounded-md bg-primary/p300 text-Gray/G50 text-[16px] text-center leading-6 font-medium"
           >
             Update Profile
@@ -102,5 +106,3 @@
     </div>
   </div>
 </div>
-<app-mobile-section></app-mobile-section>
-<app-footer></app-footer>

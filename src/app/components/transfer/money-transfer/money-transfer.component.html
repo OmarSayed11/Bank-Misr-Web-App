@@ -1,6 +1,5 @@
-<app-header />
 <div
-  class="w-[1440px] h-[1000px] flex flex-col items-center content-center justify-center"
+  class="w-[1440px] relative h-[1000px] flex flex-col items-center content-center justify-center"
 >
   <div
     class="w-[300.25px] h-[108.08px] text-Gray/G900 flex flex-col justify-between p-2"
@@ -70,6 +69,7 @@
         <div>You send</div>
         <div class="flex items-center">
           <input
+            [(ngModel)]="amount"
             type="text"
             value="1000"
             class="w-[406.53px] h-[54px] border rounded-l-lg px-4"
@@ -81,14 +81,17 @@
             <option value="EGP">EGP</option>
           </select>
         </div>
-        <div>You send</div>
+        <div>Recipient Gets</div>
         <div class="flex items-center">
           <input
             type="text"
             value="1000"
             class="w-[406.53px] h-[54px] border rounded-l-lg px-4"
           />
-          <select class="w-[147.47px] h-[54px] border-l-0 border rounded-r-lg">
+          <select
+            [(ngModel)]="sendCurrency"
+            class="w-[147.47px] h-[54px] border-l-0 border rounded-r-lg"
+          >
             <option value="USD" selected>USD</option>
             <option value="EUR">EUR</option>
             <option value="KSR">KSR</option>
@@ -105,7 +108,7 @@
           Recipient Information
         </div>
         <div
-          class="w-[144px] h-[30px] flex flex-row items-center content-center justify-center gap-2"
+          class="w-[144px] h-[30px] flex flex-row items-center cursor-pointer content-center justify-center gap-2"
         >
           <div class="w-[24px] h-[24px] items-center content-center">
             <svg
@@ -123,6 +126,7 @@
           </div>
           <div
             class="w-[88px] h-[30px] text-center font-normal leading-[30px] text-primary/p300 text-[20px]"
+            (click)="openFavouritePopup()"
           >
             Favourite
           </div>
@@ -149,7 +153,7 @@
         </div>
         <input
           type="text"
-          class="w-[554px] h-[56px] rounded-lg border border-Gray/G70 bg-Gray/G50"
+          class="w-[554px] px-4 h-[56px] rounded-lg border border-Gray/G70 bg-Gray/G50"
         />
       </div>
       <div class="flex flex-col w-[554px] h-[96px] gap-4">
@@ -158,16 +162,20 @@
         </div>
         <input
           type="text"
-          class="w-[554px] h-[56px] rounded-lg border border-Gray/G70 bg-Gray/G50"
+          [(ngModel)]="accountNum"
+          class="w-[554px] px-4 h-[56px] rounded-lg border border-Gray/G70 bg-Gray/G50"
         />
       </div>
       <button
+        (click)="transferMoney()"
         class="w-[554px] h-[56px] rounded-[6.5px] border border-primary/p300 bg-primary/p300 text-center font-medium text-[16px] leading-[24px] text-Gray/G50"
       >
         Continue
       </button>
     </div>
   </div>
+  <app-favourite-pop-up
+    *ngIf="isFavouritePopupVisible"
+    (closePopupEvent)="closeFavouritePopup()"
+  ></app-favourite-pop-up>
 </div>
-<app-mobile-section />
-<app-footer />

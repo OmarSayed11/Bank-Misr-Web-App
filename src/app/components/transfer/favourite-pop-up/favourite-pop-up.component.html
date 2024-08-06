@@ -1,0 +1,125 @@
+<div
+  class="popup h-[506px] w-[675px] flex flex-col items-center bg-Gray/G50 shadow-md absolute py-[40px] gap-[39px] top-96 right-4 z-50"
+>
+  <div
+    class="w-[595px] h-[32px] gap-[8px] flex items-end content-end justify-end"
+  >
+    <div
+      (click)="closePopup()"
+      class="cursor-pointer w-[32px] h-[32px] flex items-center"
+    >
+      <svg
+        width="32"
+        height="32"
+        viewBox="0 0 32 32"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M9.00977 22.9911L16.0004 16.0004L22.9911 22.9911M22.9911 9.00977L15.9991 16.0004L9.00977 9.00977"
+          stroke="#24221E"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </div>
+  </div>
+  <div class="w-[567px] h-[317px] gap-[39px] flex flex-col items-center">
+    <div
+      class="w-full px-4 h-[30px] flex flex-row items-start content-start justify-start gap-2"
+    >
+      <div class="h-[24px] items-center content-center">
+        <svg
+          width="25"
+          height="25"
+          viewBox="0 0 25 25"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M22.8218 9.74583C22.7586 9.56292 22.6437 9.40226 22.4911 9.28333C22.3384 9.16441 22.1546 9.09232 21.9618 9.07583L16.2718 8.24583L13.7218 3.07583C13.6399 2.90676 13.512 2.76417 13.3528 2.6644C13.1937 2.56463 13.0096 2.51172 12.8218 2.51172C12.6339 2.51172 12.4498 2.56463 12.2907 2.6644C12.1315 2.76417 12.0036 2.90676 11.9218 3.07583L9.37176 8.23583L3.68175 9.07583C3.49668 9.10213 3.32268 9.17979 3.17951 9.29999C3.03633 9.42018 2.92971 9.5781 2.87175 9.75583C2.8187 9.9295 2.81394 10.1143 2.85798 10.2905C2.90203 10.4667 2.99321 10.6276 3.12175 10.7558L7.25175 14.7558L6.25175 20.4358C6.21138 20.6243 6.22631 20.8203 6.29474 21.0005C6.36317 21.1806 6.48219 21.3371 6.63748 21.4512C6.79278 21.5653 6.97773 21.6321 7.17008 21.6436C7.36244 21.655 7.55401 21.6107 7.72176 21.5158L12.8218 18.8458L17.9218 21.5158C18.0621 21.595 18.2206 21.6364 18.3818 21.6358C18.5936 21.6366 18.8002 21.5701 18.9718 21.4458C19.1269 21.3347 19.247 21.1815 19.3179 21.0043C19.3888 20.8271 19.4075 20.6333 19.3718 20.4458L18.3718 14.7658L22.5018 10.7658C22.6461 10.6435 22.7528 10.4827 22.8095 10.3022C22.8661 10.1216 22.8704 9.9287 22.8218 9.74583ZM16.6718 13.7458C16.556 13.8582 16.4692 13.997 16.4187 14.1502C16.3682 14.3035 16.3555 14.4666 16.3818 14.6258L17.1018 18.8258L13.3418 16.8258C13.1956 16.7535 13.0348 16.7159 12.8718 16.7159C12.7087 16.7159 12.5479 16.7535 12.4018 16.8258L8.64176 18.8258L9.36175 14.6258C9.38799 14.4666 9.37532 14.3035 9.32482 14.1502C9.27433 13.997 9.1875 13.8582 9.07175 13.7458L6.07175 10.7458L10.2818 10.1358C10.4438 10.1133 10.5978 10.0514 10.7303 9.95548C10.8628 9.85959 10.9697 9.73267 11.0418 9.58583L12.8218 5.77583L14.7018 9.59583C14.7738 9.74267 14.8808 9.86959 15.0133 9.96548C15.1458 10.0614 15.2998 10.1233 15.4618 10.1458L19.6718 10.7558L16.6718 13.7458Z"
+            fill="#871E35"
+          />
+        </svg>
+      </div>
+      <div
+        class="h-[30px] text-center font-normal leading-[30px] text-primary/p300 text-[20px]"
+      >
+        Favourite List
+      </div>
+    </div>
+    <div class="flex flex-col w-[567px] h-[248px] gap-[16px]">
+      <ng-container *ngIf="favorites$ | async as favorites; else noFavorites">
+        <div
+          *ngFor="let favorite of favorites"
+          class="bg-Gray/G20 gap-[32px] flex flex-row w-[567px] h-[116px] rounded-[8px] p-[16px]"
+        >
+          <div class="w-[84px] h-[84px] bg-Gray/G40 items-center">
+            <svg
+              width="84"
+              height="84"
+              viewBox="0 0 84 84"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="42" cy="42" r="42" fill="#E3E2E2" />
+              <g clip-path="url(#clip0_2077_5607)">
+                <path d="M27 37H57V39H27V37Z" fill="#3D3D3D" />
+                <path d="M27 44H57V46H27V44Z" fill="#3D3D3D" />
+                <path d="M27 51H57V53H27V51Z" fill="#3D3D3D" />
+                <path d="M27 58H57V60H27V58Z" fill="#3D3D3D" />
+              </g>
+              <defs>
+                <clipPath id="clip0_2077_5607">
+                  <rect width="84" height="84" fill="white" />
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+          <div class="flex flex-col gap-[10px]">
+            <div class="font-medium text-base text-primary-p700">
+              {{ favorite.recipientName }}
+            </div>
+            <div class="text-sm text-primary-p500">
+              {{ favorite.accountNumber }}
+            </div>
+          </div>
+          <div
+            class="flex flex-col ml-auto gap-[12px] justify-between items-end"
+          >
+            <div class="cursor-pointer" (click)="removeFavorite(favorite)">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M17.5986 15.5936L13.7436 11.5936L17.5986 7.5936"
+                  stroke="#871E35"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M7.83691 7.59375L11.6919 11.5937L7.83691 15.5937"
+                  stroke="#871E35"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #noFavorites>
+        <div class="text-center text-sm text-primary-p500">
+          No favorites found.
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
